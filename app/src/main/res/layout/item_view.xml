@@ -22,6 +22,7 @@
             style="@style/TextAppearance.AppCompat.Headline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="italic"
             android:text="TextView" />
 
         <TextView
@@ -29,6 +30,7 @@
             android:paddingTop="5dp"
             style="@style/TextAppearance.AppCompat.Body1"
             android:layout_width="match_parent"
+            android:textStyle="italic"
             android:layout_height="wrap_content"
             android:text="TextView" />
 

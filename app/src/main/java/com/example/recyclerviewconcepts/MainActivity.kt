@@ -2,6 +2,7 @@ package com.example.recyclerviewconcepts
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,11 +31,25 @@ class MainActivity : AppCompatActivity() {
 
 
         floatingBtnToGrid.setOnClickListener {
-                grideView()
+            addClickToGridButton()
         }
+
     }
-    private fun grideView(){
-            val gridLayout: GridLayoutManager = GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
-            list.layoutManager = gridLayout
+    private fun addClickToGridButton(){
+        var i : Int =0
+        floatingBtnToGrid.setOnClickListener {
+            if(i == 0) {
+                // recyclerViewList.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
+                list.layoutManager =
+                    GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
+                Toast.makeText(this, "Switched to grid view!", Toast.LENGTH_SHORT).show();
+                i++
+            }
+            else if (i == 1){
+                list.layoutManager = LinearLayoutManager(this)
+                Toast.makeText(this, "Switched to list view!", Toast.LENGTH_SHORT).show();
+                i = 0
+            }
+        }
     }
 }

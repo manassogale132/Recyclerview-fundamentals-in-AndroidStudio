@@ -14,7 +14,7 @@ class MyAdapter(val list: List<DataClass>) : RecyclerView.Adapter<MyAdapter.MyVi
         return  MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {        //binding our custom data to our views is RecyclerView
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {        //binding our custom data to our views in RecyclerView
         holder.title.text = list[position].title
         holder.description.text = list[position].description
     }
@@ -24,8 +24,8 @@ class MyAdapter(val list: List<DataClass>) : RecyclerView.Adapter<MyAdapter.MyVi
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){     //Nested class      //store the views
-        var title = itemView.findViewById<TextView>(R.id.textViewTitle)
-        var description = itemView.findViewById<TextView>(R.id.textViewDescription)
+        val title = itemView.findViewById<TextView>(R.id.textViewTitle)
+        val description = itemView.findViewById<TextView>(R.id.textViewDescription)
     }
 }
 
