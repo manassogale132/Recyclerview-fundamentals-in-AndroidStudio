@@ -43,26 +43,27 @@ class MyAdapter(private var list : ArrayList<DataClass>) : RecyclerView.Adapter<
 
     override fun getFilter(): Filter {
         return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val filterList = ArrayList<DataClass>()
-                if (constraint.isNullOrBlank() || constraint.isNullOrEmpty()) {
-                    filterList.addAll(listTemp)
+
+            override fun performFiltering(constraint: CharSequence?): FilterResults {     //automatically be executed in background thread
+                val filteredList = ArrayList<DataClass>()                                  //constraint variable to define filter logic
+                if (constraint == null || constraint.length == 0) {
+                    filteredList.addAll(listTemp)
                 } else {
-                    val filterPattern = constraint.toString().toLowerCase().trim()
+                    val filterPattern = constraint.toString().toLowerCase().trim()    //filterPattern takes the input text from constraint
                     for (list : DataClass in listTemp) {
-                        if (list.title.toLowerCase().contains(filterPattern)) {
-                            filterList.add(list)
+                        if (list.title.toLowerCase().contains(filterPattern)) {  //checking the title based on the filterpattern
+                            filteredList.add(list)
                         }
                     }
                 }
                 val filterResults = FilterResults()
-                filterResults.values = filterList
+                filterResults.values = filteredList
                 return filterResults
             }
 
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {   //results are automatically publish to the ui theard
                 list.clear()
-                list = results?.values as ArrayList<DataClass>
+                list.addAll(results?.values as Collection<DataClass>)
                 notifyDataSetChanged()
             }
         }
