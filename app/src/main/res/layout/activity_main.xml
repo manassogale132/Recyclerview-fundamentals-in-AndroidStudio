@@ -6,23 +6,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list"
+        android:id="@+id/listRecycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="11dp"
-       />
+        android:layout_marginTop="45dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
         android:id="@+id/floatingBtnToGrid"
-        android:src="@drawable/ic_baseline_grid_view_24"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="58dp"
-        android:layout_marginRight="58dp"
-        android:layout_marginBottom="57dp" />
+        android:layout_marginEnd="31dp"
+        android:layout_marginRight="31dp"
+        android:layout_marginBottom="57dp"
+        android:src="@drawable/ic_baseline_grid_view_24" />
 </RelativeLayout>

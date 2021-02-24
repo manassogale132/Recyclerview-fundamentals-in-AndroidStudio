@@ -3,11 +3,15 @@ package com.example.recyclerviewconcepts
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var myAdapter: MyAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,28 +29,37 @@ class MainActivity : AppCompatActivity() {
         listOfLanguagesObjects.add(DataClass("TypeScript", "TypeScript is an open-source language that builds on JavaScript by adding static type definitions. Types provide a way to define the shape of an object, providing better documentation, and allowing TypeScript to validate that a user’s code is working correctly."))
         listOfLanguagesObjects.add(DataClass("PowerShell", "PowerShell provides full access to COM and WMI, enabling administrators to perform administrative tasks on both local and remote Windows systems as well as WS-Management and CIM enabling management of remote Linux systems and network devices. It has a rich expression parser and a fully developed scripting language."))
 
+        myAdapter = MyAdapter(listOfLanguagesObjects as ArrayList<DataClass>)
+        listRecycler.adapter = myAdapter
+        listRecycler.layoutManager = LinearLayoutManager(this)
 
-        list.adapter = MyAdapter(listOfLanguagesObjects)
-        list.layoutManager = LinearLayoutManager(this)
 
+        searchViewId.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(searchText: String): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(searchText: String): Boolean {
+                myAdapter.filter.filter(searchText)
+                return false
+            }
+        })
 
         floatingBtnToGrid.setOnClickListener {
             addClickToGridButton()
         }
-
     }
     private fun addClickToGridButton(){
         var i : Int =0
         floatingBtnToGrid.setOnClickListener {
             if(i == 0) {
                 // recyclerViewList.layoutManager = StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL)
-                list.layoutManager =
+                listRecycler.layoutManager =
                     GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false)
                 Toast.makeText(this, "Switched to grid view!", Toast.LENGTH_SHORT).show();
                 i++
             }
             else if (i == 1){
-                list.layoutManager = LinearLayoutManager(this)
+                listRecycler.layoutManager = LinearLayoutManager(this)
                 Toast.makeText(this, "Switched to list view!", Toast.LENGTH_SHORT).show();
                 i = 0
             }
