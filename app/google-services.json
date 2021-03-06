@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "675088475445",
+    "project_id": "recyclerview-concepts",
+    "storage_bucket": "recyclerview-concepts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:675088475445:android:d03dc32ccfc6d1007e587c",
+        "android_client_info": {
+          "package_name": "com.example.recyclerviewconcepts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "675088475445-f7mtd30j212lghsei3f8i0sm3b5jinqo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPEr7WmTYoiBA2GElcdS9RDqDxbab18yI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "675088475445-f7mtd30j212lghsei3f8i0sm3b5jinqo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

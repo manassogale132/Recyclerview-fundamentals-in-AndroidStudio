@@ -13,20 +13,13 @@ class MyAdapter(private var list : ArrayList<DataClass>) : RecyclerView.Adapter<
 
     private var listTemp = ArrayList<DataClass>(list)
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): MyViewHolder {    //creates the view-holder and store our views in it
-        val inflater =
-            LayoutInflater.from(parent.context)                       //LayoutInflater - takes your layout xml file and converts it into object
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {    //creates the view-holder and store our views in it
+        val inflater = LayoutInflater.from(parent.context)                       //LayoutInflater - takes your layout xml file and converts it into object
         val view = inflater.inflate(R.layout.item_view, parent, false)
         return MyViewHolder(view)
     }
 
-    override fun onBindViewHolder(
-        holder: MyViewHolder,
-        position: Int
-    ) {        //binding our custom data to our views in RecyclerView
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {        //binding our custom data to our views in RecyclerView
         holder.title.text = list[position].title
         holder.description.text = list[position].description
     }
@@ -67,5 +60,10 @@ class MyAdapter(private var list : ArrayList<DataClass>) : RecyclerView.Adapter<
                 notifyDataSetChanged()
             }
         }
+    }
+
+    fun updateData(list: List<DataClass>) {
+        this.list.addAll(list)
+        notifyDataSetChanged()
     }
 }
